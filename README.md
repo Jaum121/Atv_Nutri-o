@@ -7,12 +7,12 @@ Alisson
 Cynthia
 João Vitor
 Descrição do Projeto
-O projeto de nutrição foi concebido para auxiliar nutricionistas e pacientes a manterem um controle detalhado e personalizado de dietas e planos alimentares. Utilizando uma interface amigável, o sistema permite o cadastro de refeições, monitoramento de nutrientes, e avaliação de metas de saúde.
+O projeto de nutrição foi concebido para auxiliar nutricionistas e pacientes a manterem um controle detalhado e personalizado de dietas e planos alimentares. Utilizando uma interface amigável, o sistema permite o cadastro de refeições, monitoramento de nutrientes e avaliação de metas de saúde.
 
 Tecnologias Utilizadas
-Linguagem de Programação: [Nome da linguagem utilizada]
-Frameworks: [Nome dos frameworks utilizados]
-Banco de Dados: [Nome do banco de dados utilizado]
-Ferramentas de Desenvolvimento: [Nome das ferramentas e IDEs utilizadas]
+Linguagem de Programação: PHP, CSS, HTML
+Banco de Dados: MySQL (local, utilizando XAMPP)
+Ferramentas de Desenvolvimento: VSCode
 Como Contribuir
 Se você é um aluno da Fasipe e gostaria de contribuir para este projeto, sinta-se à vontade para entrar em contato com um dos responsáveis ou enviar suas sugestões diretamente através deste repositório.
+
