@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Avaliação Nutricional</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar h1 {
+            color: #2ecc71;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li a:hover {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .sidebar ul li a span {
+            margin-left: 10px;
+        }
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        #confirmationMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #28a745;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .form-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Nutrição</h1>
+        <ul>
+            <li><a href="indeX.PHP"><span>🏠</span><span>Início</span></a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="main-content">
+            <div class="form-container">
+                <h2>Formulário de Avaliação Nutricional</h2>
+                <form id="nutritionForm" action="process.php" method="post">
+                    <label for="cpfPaciente">CPF do Paciente:</label>
+                    <input type="text" id="cpfPaciente" name="cpfPaciente" maxlength="11" required>
+
+                    <label for="idProfissional">ID do Profissional:</label>
+                    <input type="number" id="idProfissional" name="idProfissional" min="0" required>
+
+                    <label for="codProcedimento">Código do Procedimento:</label>
+                    <input type="number" id="codProcedimento" name="codProcedimento" min="0" required>
+
+                    <label for="avNutriPac">Avaliação Nutricional do Paciente:</label>
+                    <textarea id="avNutriPac" name="avNutriPac" rows="4" required></textarea>
+
+                    <label for="dataAvaliacao">Data da Avaliação:</label>
+                    <input type="datetime-local" id="dataAvaliacao" name="dataAvaliacao" required>
+
+                    <label for="historicoClinico">Histórico Clínico:</label>
+                    <textarea id="historicoClinico" name="historicoClinico" rows="4" required></textarea>
+
+                    <label for="exames">Exames Realizados:</label>
+                    <textarea id="exames" name="exames" rows="4" required></textarea>
+
+                    <label for="avAntropometrica">Avaliação Antropométrica:</label>
+                    <input type="text" id="avAntropometrica" name="avAntropometrica" required>
+
+                    <label for="circunCefalica">Circunferência Cefálica:</label>
+                    <input type="number" id="circunCefalica" name="circunCefalica" min="0" step="0.01" required>
+
+                    <label for="circunBraco">Circunferência do Braço:</label>
+                    <input type="number" id="circunBraco" name="circunBraco" min="0" step="0.01" required>
+
+                    <label for="circunPunho">Circunferência do Punho:</label>
+                    <input type="number" id="circunPunho" name="circunPunho" min="0" step="0.01" required>
+
+                    <label for="circunCintura">Circunferência da Cintura:</label>
+                    <input type="number" id="circunCintura" name="circunCintura" min="0" step="0.01" required>
+
+                    <label for="circunQuadril">Circunferência do Quadril:</label>
+                    <input type="number" id="circunQuadril" name="circunQuadril" min="0" step="0.01" required>
+
+                    <label for="circunPanturrilha">Circunferência da Panturrilha:</label>
+                    <input type="number" id="circunPanturrilha" name="circunPanturrilha" min="0" step="0.01" required>
+
+                    <label for="circunDobraCutanea">Circunferência das Dobras Cutâneas:</label>
+                    <input type="number" id="circunDobraCutanea" name="circunDobraCutanea" min="0" step="0.01" required>
+
+                    <label for="circunDobraSubescapular">Circunferência das Dobras Subescapulares:</label>
+                    <input type="number" id="circunDobraSubescapular" name="circunDobraSubescapular" min="0" step="0.01" required>
+
+                    <label for="circunDobraBicipal">Circunferência das Dobras Bicipais:</label>
+                    <input type="number" id="circunDobraBicipal" name="circunDobraBicipal" min="0" step="0.01" required>
+
+                    <label for="circunDobraAbdominal">Circunferência das Dobras Abdominais:</label>
+                    <input type="number" id="circunDobraAbdominal" name="circunDobraAbdominal" min="0" step="0.01" required>
+
+                    <label for="circunDobraSuprailiaca">Circunferência das Dobras Suprailíacas:</label>
+                    <input type="number" id="circunDobraSuprailiaca" name="circunDobraSuprailiaca" min="0" step="0.01" required>
+
+                    <label for="circunDobraPanturrilha">Circunferência das Dobras da Panturrilha:</label>
+                    <input type="number" id="circunDobraPanturrilha" name="circunDobraPanturrilha" min="0" step="0.01" required>
+
+                    <label for="circunDobraCoxa">Circunferência das Dobras da Coxa:</label>
+                    <input type="number" id="circunDobraCoxa" name="circunDobraCoxa" min="0" step="0.01" required>
+
+                    <label for="planoAlimentar">Plano Alimentar:</label>
+                    <textarea id="planoAlimentar" name="planoAlimentar" rows="4" required></textarea>
+
+                    <input type="submit" value="Enviar">
+                </form>
+                <div id="confirmationMessage">Dados enviados com sucesso!</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // CPF field input mask
+        document.getElementById('cpfPaciente').addEventListener('input', function (e) {
+            // Only allow numbers
+            this.value = this.value.replace(/\D/g, '').slice(0, 11); // Limit to 11 digits
+        });
+
+        // Prevent negative numbers
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+        numberInputs.forEach(input => {
+            input.addEventListener('input', function () {
+                if (this.value < 0) {
+                    this.value = 0;
+                }
+            });
+        });
+
+        document.getElementById('nutritionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Fetch form data
+            const formData = new FormData(this);
+
+            // Send form data to the server using fetch
+            fetch('process.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Show confirmation message
+                document.getElementById('confirmationMessage').style.display = 'block';
+
+                // Clear form fields
+                document.getElementById('nutritionForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
